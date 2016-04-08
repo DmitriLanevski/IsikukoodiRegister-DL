@@ -7,17 +7,21 @@ import java.util.List;
 public class IsikukoodiRegister {
     private List<String> isikukoodid = new ArrayList<>();
 
-    public synchronized void register(String isikukood){
-        if (!isikukoodid.contains(isikukood)){
-            isikukoodid.add(isikukood);
+    public void register(String isikukood){
+        synchronized (isikukood) {
+            if (!isikukoodid.contains(isikukood)){
+                isikukoodid.add(isikukood);
+            }
         }
     }
 
-    public synchronized int jarjekorranumber(String isikukood){
-        if (!isikukoodid.contains(isikukood)){
-            return -1;
-        } else {
-            return isikukoodid.indexOf(isikukood);
+    public int jarjekorranumber(String isikukood){
+        synchronized (isikukood) {
+            if (!isikukoodid.contains(isikukood)){
+                return -1;
+            } else {
+                return isikukoodid.indexOf(isikukood);
+            }
         }
     }
 

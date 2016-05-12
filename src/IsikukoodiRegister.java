@@ -8,7 +8,7 @@ public class IsikukoodiRegister {
     private List<String> isikukoodid = new ArrayList<>();
 
     public void register(String isikukood){
-        synchronized (isikukood) {
+        synchronized (isikukoodid) {
             if (!isikukoodid.contains(isikukood)){
                 isikukoodid.add(isikukood);
             }
@@ -16,7 +16,7 @@ public class IsikukoodiRegister {
     }
 
     public int jarjekorranumber(String isikukood){
-        synchronized (isikukood) {
+        synchronized (isikukoodid) {
             if (!isikukoodid.contains(isikukood)){
                 return -1;
             } else {
@@ -26,6 +26,8 @@ public class IsikukoodiRegister {
     }
 
     public List<String> getIsikukoodid() {
-        return isikukoodid;
+        synchronized (isikukoodid){
+            return isikukoodid;
+        }
     }
 }

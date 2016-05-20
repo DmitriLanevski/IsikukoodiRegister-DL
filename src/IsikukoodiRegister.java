@@ -7,8 +7,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Created by lanev_000 on 6.04.2016.
  */
 public class IsikukoodiRegister {
-    private CopyOnWriteArrayList<String> isikukoodid = new CopyOnWriteArrayList<>();
-    //private List<String> isikukoodid = new ArrayList<>();
+    //private private CopyOnWriteArrayList<String> isikukoodid = new CopyOnWriteArrayList<>();<String> isikukoodid = new CopyOnWriteArrayList<>();
+    private List<String> isikukoodid = new ArrayList<>();
 
     public void register(String isikukood){
         synchronized (isikukoodid) {
@@ -32,8 +32,8 @@ public class IsikukoodiRegister {
         synchronized (isikukoodid){
             //It should work with CopyOnWriteArrayList. But I an not shure.
             //Is it okey? Will sollution with ArrayList and new Arraylist(Arraylist) work?
-            return  isikukoodid;
-            //return new ArrayList<>(isikukoodid);
+            //return  isikukoodid;
+            return new ArrayList<>(isikukoodid);
         }
     }
 }
